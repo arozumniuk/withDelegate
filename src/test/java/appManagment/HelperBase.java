@@ -25,9 +25,7 @@ public class HelperBase {
         wd.findElement(locator).sendKeys(text);
     }
 
-    public void openPage(String url){
-        wd.get(url);
-    }
+
 
 
 

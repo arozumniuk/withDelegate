@@ -10,7 +10,7 @@ public class NavigationHelper extends HelperBase {
     }
 
     public void goToPage(String url){
-        openPage(url);
+        wd.get(url);
     }
 
 }

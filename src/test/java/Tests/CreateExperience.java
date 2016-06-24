@@ -10,9 +10,9 @@ import static appManagment.Constants.*;
 public class CreateExperience extends TestBase {
 @Test
     public void createQuestionExperience(){
-        app.getNavigationHelper().openPage(ADMIN_PAGE_GROUPS);
+        app.getNavigationHelper().goToPage(ADMIN_PAGE_GROUPS);
         app.getSessionsHelper().loginToAdminsModule("barney");
-
+        app.getGroupsHelper().createNewGroup();
     }
 
 }
