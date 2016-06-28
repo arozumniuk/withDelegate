@@ -11,7 +11,7 @@ import org.openqa.selenium.remote.BrowserType;
 public class TestBase {
 
 
-        protected final ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
+        public final ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
 
         @Before
         public void setUp() throws Exception {

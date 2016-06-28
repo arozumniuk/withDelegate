@@ -1,4 +1,4 @@
-package appManagment;
+package Data;
 
 /**
  * Created by orozumniuk on 6/24/2016.
