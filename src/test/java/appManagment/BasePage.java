@@ -3,16 +3,17 @@ package appManagment;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
 
 /**
  * Created by orozumniuk on 6/24/2016.
  */
-public class HelperBase {
+public class BasePage {
 
     protected WebDriver wd;
     protected ApplicationManager app;
 
-    public HelperBase (ApplicationManager app){
+    public BasePage(ApplicationManager app){
         this.app = app;
         this.wd = app.wd;
     }
@@ -27,18 +28,11 @@ public class HelperBase {
         wd.findElement(locator).sendKeys(text);
     }
 
-    public String generateRandomString(int stringLength){
-        return  RandomStringUtils.randomAlphabetic(stringLength);
+    public void select(By locator, String text){
+        Select select = new Select(wd.findElement(locator));
+        select.selectByVisibleText(text);
     }
 
-    public static String generateGroupName(int length) {
-        String allowedChars = "abcdefghijklmnopqrstuvwxyz" +   //alphabets
-                "1234567890" +   //numbers
-                "";   //special characters
-
-        String temp = RandomStringUtils.random(length, allowedChars);
-        return   temp.substring(0, temp.length() - 5) + "-test";
-          }
 
 
 

@@ -14,14 +14,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class ApplicationManager {
 
-    protected ExperienceHelper experienceHelper;
-    protected GroupsHelper groupsHelper;
-    protected NodesHelper nodesHelper;
-    protected PAHelper paHelper;
-    protected ReportsHelper reportsHelper;
-    protected UserHelper userHelper;
-    protected SessionsHelper sessionsHelper;
-    protected NavigationHelper navigationHelper;
+    protected ExperiencePage experiencePage;
+    protected GroupPage groupPage;
+    protected NodePage nodePage;
+    protected loginPage loginPage;
+    protected goTo goTo;
 
     WebDriver wd;
     private String browser;
@@ -43,50 +40,34 @@ public class ApplicationManager {
         }
         wd.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
 
-        experienceHelper = new ExperienceHelper(this);
-        groupsHelper = new GroupsHelper(this);
-        nodesHelper = new NodesHelper(this);
-        paHelper = new PAHelper(this);
-        reportsHelper = new ReportsHelper(this);
-        userHelper = new UserHelper(this);
-        sessionsHelper = new SessionsHelper(this);
-        navigationHelper = new NavigationHelper(this);
+        experiencePage = new ExperiencePage(this);
+        groupPage = new GroupPage(this);
+        nodePage = new NodePage(this);
+        loginPage = new loginPage(this);
+        goTo = new goTo(this);
     }
-
-
 
     public void stop() {
         wd.quit();
     }
 
-    public ExperienceHelper getExperienceHelper() {
-        return experienceHelper;
+    public ExperiencePage experience() {
+        return experiencePage;
     }
 
-    public GroupsHelper getGroupsHelper() {
-        return groupsHelper;
+    public GroupPage groups() {
+        return groupPage;
     }
 
-    public NodesHelper getNodesHelper() {
-        return nodesHelper;
+    public NodePage node() {
+        return nodePage;
     }
 
-    public PAHelper getPaHelper() {
-        return paHelper;
+    public loginPage login() {
+        return loginPage;
     }
 
-    public ReportsHelper getReportsHelper() {
-        return reportsHelper;
-    }
-
-    public UserHelper getUserHelper() {
-        return userHelper;
-    }
-    public SessionsHelper getSessionsHelper() {
-        return sessionsHelper;
-    }
-
-    public NavigationHelper getNavigationHelper() {
-        return navigationHelper;
+    public goTo goTo() {
+        return goTo;
     }
 }

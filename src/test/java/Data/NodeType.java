@@ -1,0 +1,14 @@
+package Data;
+
+/**
+ * Created by orozumniuk on 6/29/2016.
+ */
+public enum NodeType {
+    TEXT_ONLY,
+    QUESTION_WITH_ONE_CORRECT_ANSWER,
+    QUESTION_WITH_MULTIPLE_CORRECT_ANSWERS,
+    RATING_QUESTION,
+    FREE_FORM_TEXT_ENTRY_FIELD,
+    USER_SELECTION,
+    FORCED_RANKED_QUESTION
+}

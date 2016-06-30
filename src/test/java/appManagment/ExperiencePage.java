@@ -9,9 +9,9 @@ import org.openqa.selenium.By;
 /**
  * Created by orozumniuk on 6/24/2016.
  */
-public class ExperienceHelper extends HelperBase {
+public class ExperiencePage extends BasePage {
 
-    public ExperienceHelper(ApplicationManager app) {
+    public ExperiencePage(ApplicationManager app) {
         super(app);
     }
 
@@ -31,37 +31,10 @@ public class ExperienceHelper extends HelperBase {
     }
 
 
-    public void setUpTimer(String duration, boolean count_doun, boolean Loop) {
+   public void create(ExperienceData exp) throws Exception {
 
-        click(By.className("fa-toggle-off"));
-        type(By.id("time_limit"), duration);
-        if (count_doun) {
-            click(By.id("countdown"));
-        }
+       setExpType(exp.getExperienceType());
 
-        if (Loop) {
-            click(By.id("loop"));
-        }
-    }
-
-    public void setUpProfileSelection(boolean profileSelection) {
-        if (profileSelection) {
-            click(By.id("profile-selection"));
-        }
-
-    }
-
-    public void setUpEvaluationSummary(boolean evaluationSummary) {
-        if (evaluationSummary) {
-            click(By.id("evaluation-summary"));
-        }
-    }
-
-    public void setUpPassingGrade(String countGrade) {
-        type(By.id("grade"), countGrade);
-    }
-
-   public void fillFields(ExperienceData exp){
        type(By.id("experience-title"),exp.getName());
        type(By.id("experience-key"),exp.getCode());
        type(By.id("grade"), exp.getPassingGrade());
@@ -73,9 +46,29 @@ public class ExperienceHelper extends HelperBase {
            click(By.id("profile-selection"));
        }
 
+       if (exp.getTimer()){
+           click(By.className("fa-toggle-off"));
+           type(By.id("time_limit"), exp.getDuration());
+       }
 
+       if (exp.getCount_down()){
+           click(By.id("countdown"));
+       }
+
+       if (exp.getLoop()){
+           click(By.id("loop"));
+       }
+
+      //  click(By.className("btn-success"));
    }
 
+    public int getCount() {
+        return wd.findElements(By.tagName("tr")).size();
+    }
+
+    public void selectNodes(String nodeName){
+        select(By.id("question-type"), nodeName);
+}
 
 }
 

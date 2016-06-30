@@ -5,6 +5,8 @@ package Data;
  */
 public enum ExperienceType {
 
-        EVALUATION, STANDART, QUESTION_PORTAL;
+        EVALUATION,
+        STANDART,
+        QUESTION_PORTAL;
 
 }

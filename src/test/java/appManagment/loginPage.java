@@ -2,10 +2,10 @@ package appManagment;
 
 import org.openqa.selenium.By;
 
-public class SessionsHelper extends HelperBase{
+public class loginPage extends BasePage {
 
 
-    public SessionsHelper(ApplicationManager app) {
+    public loginPage(ApplicationManager app) {
         super(app);
     }
 
@@ -15,7 +15,7 @@ public class SessionsHelper extends HelperBase{
             click(By.xpath(".//button[@type ='submit']"));
     }
 
-    public void loginToAdminsModule(String password){
+    public void toAdminsModule(String password){
             type(By.id("password"),password);
             click(By.name("commit"));
     }
