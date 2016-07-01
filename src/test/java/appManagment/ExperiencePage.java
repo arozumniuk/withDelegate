@@ -3,7 +3,11 @@ package appManagment;
 
 import Data.ExperienceData;
 import Data.ExperienceType;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 
 /**
@@ -15,16 +19,24 @@ public class ExperiencePage extends BasePage {
         super(app);
     }
 
-    public void setExpType(ExperienceType experienceType) throws Exception {
+    private void selectEvalType(String evType){
+        click(By.xpath("//input[@value = '"+evType+"']"));
+    }
 
+    private void setExpType(ExperienceType experienceType) throws Exception {
+        String evType;
         switch (experienceType) {
             case EVALUATION:
-                click(By.xpath("//input[@value = 'Evaluation']"));
+                evType = "Evaluation";
+                selectEvalType(evType);
                 break;
             case STANDART:
-                click(By.xpath("//input[@value = 'Standard']"));
-            case QUESTION_PORTAL:
-                click(By.xpath("//input[@value = 'Question portal']"));
+                evType = "Standard";
+                selectEvalType(evType);
+                break;
+            case QUESTIONPORTAL:
+                evType = "Question portal";
+                selectEvalType(evType);
             default:
                 throw new Exception("i don't know this");
         }
@@ -59,7 +71,8 @@ public class ExperiencePage extends BasePage {
            click(By.id("loop"));
        }
 
-      //  click(By.className("btn-success"));
+        click(By.className("btn-success"));
+
    }
 
     public int getCount() {
@@ -69,6 +82,24 @@ public class ExperiencePage extends BasePage {
     public void selectNodes(String nodeName){
         select(By.id("question-type"), nodeName);
 }
+
+
+
+    public void deleteExperience(String expName){
+        List <WebElement> exp = wd.findElements(By.xpath(String.format("//tr/td/a[contains(text(), '%s')]/../../td[6]/a[@title= 'Delete experience']", expName)));
+        int size = exp.size();
+        for (int i= 0; i<size; i++) {
+            click(By.xpath(String.format("//tr/td/a[contains(text(), '%s')]/../../td[6]/a[@title= 'Delete experience']", expName)));
+            try {
+                confirmAction();
+            }catch (Exception NoAlertPresentException){
+
+            }
+        }
+    }
+
+
+
 
 }
 

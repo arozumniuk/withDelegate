@@ -5,8 +5,17 @@ package Data;
  */
 public enum ExperienceType {
 
-        EVALUATION,
-        STANDART,
-        QUESTION_PORTAL;
+        EVALUATION("Evaluation"),
+        STANDART("Standart"),
+        QUESTIONPORTAL("QuestionPortal");
+
+        private String value;
+        ExperienceType(String value){
+                this.value = value;
+        }
+
+        public String value(){
+                return value;
+        }
 
 }

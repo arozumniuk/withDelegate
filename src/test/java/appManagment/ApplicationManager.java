@@ -18,7 +18,9 @@ public class ApplicationManager {
     protected GroupPage groupPage;
     protected NodePage nodePage;
     protected loginPage loginPage;
-    protected goTo goTo;
+    protected appNavigation appNavigation;
+    protected PA pa;
+    protected ReportsPage reportsPage;
 
     WebDriver wd;
     private String browser;
@@ -29,7 +31,10 @@ public class ApplicationManager {
     public void init() {
 
         if (browser==(BrowserType.FIREFOX)) {
-            wd = new FirefoxDriver();
+
+            DesiredCapabilities cap = new DesiredCapabilities();
+            cap.setCapability("nativeEvents",false);
+            wd = new FirefoxDriver(cap);
         } else if (browser == BrowserType.CHROME) {
             wd = new ChromeDriver();
         } else if (browser == BrowserType.IE) {
@@ -38,36 +43,39 @@ public class ApplicationManager {
             wd = new InternetExplorerDriver(cap);
 
         }
-        wd.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        wd.manage().window().maximize();
 
         experiencePage = new ExperiencePage(this);
         groupPage = new GroupPage(this);
         nodePage = new NodePage(this);
         loginPage = new loginPage(this);
-        goTo = new goTo(this);
+        appNavigation = new appNavigation(this);
+        pa = new PA(this);
+        reportsPage = new ReportsPage(this);
     }
 
     public void stop() {
         wd.quit();
     }
-
     public ExperiencePage experience() {
         return experiencePage;
     }
-
     public GroupPage groups() {
         return groupPage;
     }
-
     public NodePage node() {
         return nodePage;
     }
-
     public loginPage login() {
         return loginPage;
     }
-
-    public goTo goTo() {
-        return goTo;
+    public appNavigation go() {
+        return appNavigation;
     }
+    public PA performAnalizer() {return pa;}
+    public ReportsPage ReportsPage() {
+        return reportsPage;
+    }
+
 }

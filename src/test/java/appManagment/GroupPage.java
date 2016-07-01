@@ -13,26 +13,26 @@ public class GroupPage extends BasePage {
         super(app);
     }
 
-    public String create(){
-        //app.goTo.page(ADMIN_PAGE_GROUPS);
+    /**
+     * create new group
+     * @param groupName - to be assigned for the new group
+     */
+    public void create(String groupName){
         click(By.className("add-btn"));
-        String groupName = generateGroupName(15);
         type(By.id("group_title"), groupName);
         click(By.name("button"));
-        return groupName;
+
     }
 
     /**
-     *
+     * generate randon name with
      * @param lengthOfName - should be more, then 11
      * @return
      */
-    public String generateGroupName(int lengthOfName){
+    public String generateGroupName(int lengthOfName, String finish){
        return generateRandomName(lengthOfName,"_TEST_Group");
     }
-    public void openGroup(String groupName){
-        click(By.linkText(groupName));
-    }
+
     public int getCount() {
         return wd.findElements(By.xpath("//tr[@data-id]")).size();
     }

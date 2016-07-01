@@ -16,7 +16,6 @@ public class ExperienceData {
     private Boolean timer = false;
     private ExperienceType experienceType;
 
-
     public ExperienceData(String name, String code, ExperienceType experienceType  ){
         this.name = name;
         this.code = code;

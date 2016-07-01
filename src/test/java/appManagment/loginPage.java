@@ -12,7 +12,9 @@ public class loginPage extends BasePage {
     public void login(String login, String password){
             type(By.id("input_0"),login);
             type(By.id("input_1"),password);
-            click(By.xpath(".//button[@type ='submit']"));
+            click(By.xpath("//button[@type ='submit']"));
+
+
     }
 
     public void toAdminsModule(String password){
