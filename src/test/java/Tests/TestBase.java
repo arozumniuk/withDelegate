@@ -2,7 +2,9 @@ package Tests;
 
 import appManagment.ApplicationManager;
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.openqa.selenium.remote.BrowserType;
 
 /**
@@ -20,7 +22,7 @@ public class TestBase {
 
         @After
         public void tearDown() {
-            //  app.stop();
+            app.stop();
         }
 
     }

@@ -3,6 +3,7 @@ package appManagment;
 import Data.Constants.Urls.*;
 import org.openqa.selenium.By;
 
+import static Data.Constants.Urls.ADMIN_PAGE_GROUPS;
 import static Data.Constants.Urls.PERFORMANCE_ANALIZER;
 
 /**
@@ -42,7 +43,14 @@ public class appNavigation extends BasePage {
         toStartPage(PERFORMANCE_ANALIZER);
     }
 
+    public void toAdminModule_ManageContentPage(){
+        toStartPage(ADMIN_PAGE_GROUPS);
+    }
 
+public void toSummaryOfResponses(){
+    click(By.xpath("//button[@aria-label = 'Submit']"));
+   // try (wd.findElement())
+}
 
 
 }

@@ -25,7 +25,7 @@ public class BasePage {
 
     public void type (By locator, String text) {
         click(locator);
-       // wd.findElement(locator).clear();
+       wd.findElement(locator).clear();
         try {
             Thread.sleep(200);
         } catch (InterruptedException e) {
@@ -42,6 +42,8 @@ public class BasePage {
     public boolean isTextPresentOnPage(String text) {
         return wd.getPageSource().contains(text);
     }
+    public boolean isTextPresentInWindow(String text){
+        return wd.findElement(By.xpath("//*[@class = 'summary ng-scope']" )).getText().contains(text);}
 
     public String getPageTitle(){
         return wd.getTitle();
@@ -55,7 +57,7 @@ public class BasePage {
     public void checkPageTitle(String expectedPageTitle) throws Exception {
         String currentPageTitle = getPageTitle();
         if (! currentPageTitle.equals(expectedPageTitle)){
-            throw new Exception("Actual page: " + currentPageTitle + "\nExpectedPage"+ expectedPageTitle+ "\n URL: " +  getCurrentUrl() );
+            throw new Exception("Actual page: " + currentPageTitle + "\nExpectedPage: "+ expectedPageTitle+ "\n URL: " +  getCurrentUrl() );
         }
     }
 

@@ -23,7 +23,7 @@ public class CreateNodePageTest extends TestBase {
 
         app.go().toStartPage(ADMIN_PAGE_GROUPS);
         app.login().toAdminsModule("barney");
-        app.go().toGroupDetailsPage("change_name");
+        app.go().toGroupDetailsPage("AUTO_TEST_DO_NOT_change_PLEASE");
 
 
 

@@ -21,9 +21,6 @@ public class NodePage extends BasePage {
         super(app);
     }
 
-    public void createQustion(String text){
-        type(By.className("note-editor panel panel-default"),text);
-    }
 
     public void createAnswer(NodeData data, int index){
         int index_html = 3;
@@ -34,15 +31,12 @@ public class NodePage extends BasePage {
         }
     }
 
-    public void createDescription(NodeData data, int index){
-        click(By.xpath("//*[@class='row option']["+index+"]//button[@class = 'btn btn-link add-description-btn no-lp']"));
-        type(By.xpath("//*[@class='row option']["+index+"]//button[@class = 'note-editable panel-body']"),data.getDescription());
-    }
 
     private void setNodeType(NodeType node){
         String nodeType = node.value();
         select(By.id("question-type"), nodeType);
     }
+
 
     public void createNewNode(NodeData node) throws Exception {
         app.go().createNewNodePage();
@@ -50,6 +44,9 @@ public class NodePage extends BasePage {
         type(By.xpath("//*[@class= 'note-editable panel-body']"), node.getQuestion());
         switch (node.getNodeType()){
             case TEXT_ONLY:
+                if(node.getShowConfirmation()){
+                    click(By.id("show_summary"));
+                }
             break;
             case RATING_QUESTION:
                // TODO;
@@ -66,9 +63,10 @@ public class NodePage extends BasePage {
                 createAnswer(node, 3);
                 break;
             case LIST:
+                createAnswer(node,3);
                 break;
             case FORCED_RANKED_QUESTION:
-                createAnswer(node, 1 );
+                createAnswer(node, 7 );
                 break;
         }
         click(By.xpath("//button[@type= 'submit']"));

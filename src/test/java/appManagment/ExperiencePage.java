@@ -9,6 +9,9 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
+import static Data.ExperienceType.EVALUATION;
+import static Helpers.stringHelper.generateRandomName;
+
 
 /**
  * Created by orozumniuk on 6/24/2016.
@@ -42,7 +45,11 @@ public class ExperiencePage extends BasePage {
         }
     }
 
-
+    /**
+     * Create Experience
+     * @param exp = new ExperienceData
+     * @throws Exception
+     */
    public void create(ExperienceData exp) throws Exception {
 
        setExpType(exp.getExperienceType());
@@ -70,10 +77,10 @@ public class ExperiencePage extends BasePage {
        if (exp.getLoop()){
            click(By.id("loop"));
        }
-
         click(By.className("btn-success"));
 
    }
+
 
     public int getCount() {
         return wd.findElements(By.tagName("tr")).size();
@@ -84,8 +91,11 @@ public class ExperiencePage extends BasePage {
 }
 
 
-
-    public void deleteExperience(String expName){
+    /**
+     * Delete ALL exp wich finished with expName
+     * @param expName
+     */
+    public void deleteAllExperiencesWichFinishedWith(String expName){
         List <WebElement> exp = wd.findElements(By.xpath(String.format("//tr/td/a[contains(text(), '%s')]/../../td[6]/a[@title= 'Delete experience']", expName)));
         int size = exp.size();
         for (int i= 0; i<size; i++) {
@@ -98,9 +108,20 @@ public class ExperiencePage extends BasePage {
         }
     }
 
+    public void deleteExperience(String text){
+        click(By.xpath("//td[contains(text(), 'auto_passinggrades_forallnodes')]/following-sibling::td/a[@title = 'Delete experience']"));
+        confirmAction();
+    }
+    public void edit(){
+        click(By.className("fa-pencil"));
+    }
 
-
-
+    public void checkPassingGradeForAllOptionce(){
+        WebElement checkBox = wd.findElement(By.id("grade_min_for_all_options"));
+        if (! checkBox .isSelected()){
+            checkBox.click();
+        }
+    }
 }
 
 

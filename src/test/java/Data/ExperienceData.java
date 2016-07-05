@@ -15,6 +15,8 @@ public class ExperienceData {
     private boolean loop = false;
     private Boolean timer = false;
     private ExperienceType experienceType;
+    private Boolean isPassingGradeForEachOption;
+
 
     public ExperienceData(String name, String code, ExperienceType experienceType  ){
         this.name = name;
@@ -93,16 +95,6 @@ public class ExperienceData {
 
     public ExperienceData withPassingGrade(String passingGrade) {
         this.passingGrade = passingGrade;
-        return this;
-    }
-
-    public ExperienceData withName(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public ExperienceData withCode(String code) {
-        this.code = code;
         return this;
     }
 }

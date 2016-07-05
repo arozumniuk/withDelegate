@@ -21,6 +21,7 @@ public class ApplicationManager {
     protected appNavigation appNavigation;
     protected PA pa;
     protected ReportsPage reportsPage;
+    protected CreateLoosingTestData createLoosingTestData;
 
     WebDriver wd;
     private String browser;
@@ -43,7 +44,7 @@ public class ApplicationManager {
             wd = new InternetExplorerDriver(cap);
 
         }
-        wd.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         wd.manage().window().maximize();
 
         experiencePage = new ExperiencePage(this);
@@ -53,6 +54,7 @@ public class ApplicationManager {
         appNavigation = new appNavigation(this);
         pa = new PA(this);
         reportsPage = new ReportsPage(this);
+        createLoosingTestData = new CreateLoosingTestData(this);
     }
 
     public void stop() {
@@ -77,5 +79,6 @@ public class ApplicationManager {
     public ReportsPage ReportsPage() {
         return reportsPage;
     }
+    public CreateLoosingTestData getLoosingTestData() {return createLoosingTestData;}
 
 }

@@ -16,16 +16,15 @@ public class DeleteExperienceTest extends TestBase {
 
         app.go().toStartPage(ADMIN_PAGE_GROUPS);
         app.login().toAdminsModule("barney");
-        // TODO: 7/1/2016;
-        //сделать проверку на наличие группы с названием, которое содержит expNAME
+        // TODO: 7/1/2016 сделать проверку на наличие группы с названием, которое содержит expNAME
 
     }
 
     @Test
     public void deleteExperience() throws Exception {
-        app.go().toGroupDetailsPage("change_name");
+        app.go().toGroupDetailsPage("AUTO_TEST_DO_NOT_change_PLEASE");
         int countGroupBeforeDelete = app.groups().getCount();
-        app.experience().deleteExperience("expNAME");
+        app.experience().deleteAllExperiencesWichFinishedWith("expNAME");
         int countGroupAfterDelete = app.groups().getCount();
         Assert.assertEquals(countGroupBeforeDelete,countGroupAfterDelete);
     }
