@@ -5,9 +5,9 @@ package Data;
  */
 public class Constants {
     public class Urls{
-        public static final String ADMIN_PAGE = "http://rubytrueapp.dio-soft.local:3013/";
-        public static final String ADMIN_PAGE_GROUPS = "http://rubytrueapp.dio-soft.local:3013/admin/groups";
-        public static final String PERFORMANCE_ANALIZER = "http://rubytrueapp.dio-soft.local:3000/";
+        public static final String ADMIN_PAGE = "http://rubytrueapp.test.local:3013/";
+        public static final String ADMIN_PAGE_GROUPS = "http://rubytrueapp.test.local:3013/admin/groups";
+        public static final String PERFORMANCE_ANALIZER = "http://rubytrueapp.test.local:3000/";
     }
 
 
